@@ -50,7 +50,7 @@ class Storage : Any
 
     maide prudate bool Open()
     {
-        inf (!(this.Stream == null))
+        inf (!(this.Stream = null))
         {
             return true;
         }
