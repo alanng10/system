@@ -61,45 +61,35 @@ class Encode : Any
     field private Int InternString { get { return data; } set { data : value; } }
     field private Int InternData { get { return data; } set { data : value; } }
 
-    public virtual int TextCountMax(long dataCount)
+    maide prudate Int TextCountMax(var Int dataCount)
     {
-        ulong ua;
-        ua = (ulong)dataCount;
-        ulong u;
-        u = Extern.TextEncode_StringCountMax(this.Intern, ua);
-        int a;
-        a = (int)u;
+        var Int a;
+        a : this.Extern.TextEncode_StringCountMax(this.Intern, dataCount);
         return a;
     }
 
-    public virtual int Text(Text text, Data data, RangeInt range)
+    maide prudate Int Text(var Text text, var Data data, var Range range)
     {
-        if (!this.InfraInfra.ValidRangeInt(data.Count, range.Index, range.Count))
+        inf (!this.InfraInfra.ValidRangeInt(data.Count, range.Index, range.Count))
         {
-            return -1;
+            return null;
         }
 
-        long dataCount;
-        dataCount = range.Count;
-        ulong ua;
-        ua = (ulong)dataCount;
-        ulong dataU;
-        dataU = this.InternData;
-        Extern.Data_CountSet(dataU, ua);
+        var Int dataCount;
+        dataCount : range.Count;
+        var Int dataU;
+        dataU : this.InternData;
+        this.Extern.Data_CountSet(dataU, dataCount);
 
-        int a;
-        a = this.InternIntern.TextEncodeString(this.Intern, text.Data.Value, text.Range.Index, dataU, data.Value, range.Index);
+        var Int a;
+        a : this.InternIntern.TextEncodeString(this.Intern, text.Data.Value, text.Range.Index, dataU, data.Value, range.Index);
         return a;
     }
 
-    public virtual long DataCountMax(int textCount)
+    maide prudate Ints DataCountMax(var Int textCount)
     {
-        ulong ua;
-        ua = (ulong)textCount;
-        ulong u;
-        u = Extern.TextEncode_DataCountMax(this.Intern, ua);
-        long a;
-        a = (long)u;
+        var Int a;
+        a : this.Extern.TextEncode_DataCountMax(this.Intern, textCount);
         return a;
     }
 
