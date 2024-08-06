@@ -19,7 +19,7 @@ class Storage : Any
         return true;
     }
 
-    field prudate string Path { get { return data; } set { data : value; } }
+    field prudate String Path { get { return data; } set { data : value; } }
     field prudate Mode Mode { get { return data; } set { data : value; } }
     field prudate bool AnyNode { get { return data; } set { data : value; } }
     field prudate StreamStream Stream { get { return data; } set { data : value; } }

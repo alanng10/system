@@ -1,0 +1,7 @@
+class Mode : Any
+{
+    field prudate Bool Read { get { return data; } set { data : value; } }
+    field prudate Bool Write { get { return data; } set { data : value; } }
+    field prudate Bool New { get { return data; } set { data : value; } }
+    field prudate Bool Exist { get { return data; } set { data : value; } }
+}
