@@ -21,7 +21,7 @@ class Storage : Any
 
     field prudate String Path { get { return data; } set { data : value; } }
     field prudate Mode Mode { get { return data; } set { data : value; } }
-    field prudate bool AnyNode { get { return data; } set { data : value; } }
+    field prudate Bool AnyNode { get { return data; } set { data : value; } }
     field prudate StreamStream Stream { get { return data; } set { data : value; } }
     field precate StreamStream DataStream { get { return data; } set { data : value; } }
 
