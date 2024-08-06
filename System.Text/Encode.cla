@@ -93,23 +93,21 @@ class Encode : Any
         return a;
     }
 
-    public virtual long Data(Data data, long index, Text text)
+    maide prudate Int Data(var Data data, var Int index, var Text text)
     {
         if (!this.TextInfra.ValidRange(text))
         {
-            return -1;
+            return null;
         }
 
-        int textCount;
-        textCount = text.Range.Count;
-        ulong ua;
-        ua = (ulong)textCount;
-        ulong textU;
-        textU = this.InternString;
-        Extern.String_CountSet(textU, ua);
+        var Int textCount;
+        textCount : text.Range.Count;
+        var Int textU;
+        textU : this.InternString;
+        this.Extern.String_CountSet(textU, textCount);
 
-        long a;
-        a = this.InternIntern.TextEncodeData(this.Intern, data.Value, index, textU, text.Data.Value, text.Range.Index);
+        var Int a;
+        a : this.InternIntern.TextEncodeData(this.Intern, data.Value, index, textU, text.Data.Value, text.Range.Index);
         return a;
     }
 }
