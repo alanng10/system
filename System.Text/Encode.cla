@@ -1,0 +1,125 @@
+class Encode : Any
+{
+    maide prudate Bool Init()
+    {
+        base.Init();
+        this.InternIntern : share InternIntern;
+        this.Extern : share Extern;
+        this.InfraInfra : share InfraInfra;
+        this.TextInfra : share Infra;
+
+        var Extern extern;
+        extern : this.Extern;
+        
+        this.InternData : extern.Data_New();
+        extern.Data_Init(this.InternData);
+        this.InternString : extern.String_New();
+        extern.String_Init(this.InternString);
+
+        var Int ua;
+        ua : this.Kind.Intern;
+        var Bool ba;
+        ba : this.WriteBom;
+        var Int ub;
+        ub : 0;
+        inf (ba)
+        {
+            ub : 1;
+        }
+
+        this.Intern : extern.TextEncode_New();
+        extern.TextEncode_KindSet(this.Intern, ua);
+        extern.TextEncode_WriteBomSet(this.Intern, ub);
+        extern.TextEncode_Init(this.Intern);
+        return true;
+    }
+
+    maide prudate Bool Final()
+    {
+        var Extern extern;
+        extern : this.Extern;
+        
+        extern.TextEncode_Final(this.Intern);
+        extern.TextEncode_Delete(this.Intern);
+
+        extern.String_Final(this.InternString);
+        extern.String_Delete(this.InternString);
+
+        extern.Data_Final(this.InternData);
+        extern.Data_Delete(this.InternData);
+        return true;
+    }
+
+    field prudate EncodeKind Kind { get { return data; } set { data : value; } }
+    field prudate Bool WriteBom { get { return data; } set { data : value; } }
+
+    field private InternIntern InternIntern { get { return data; } set { data : value; } }
+    field private Extern Extern { get { return data; } set { data : value; } }
+    field precate InfraInfra InfraInfra { get { return data; } set { data : value; } }
+    field precate Infra TextInfra { get { return data; } set { data : value; } }
+    field private Int Intern { get { return data; } set { data : value; } }
+    field private Int InternString { get { return data; } set { data : value; } }
+    field private Int InternData { get { return data; } set { data : value; } }
+
+    public virtual int TextCountMax(long dataCount)
+    {
+        ulong ua;
+        ua = (ulong)dataCount;
+        ulong u;
+        u = Extern.TextEncode_StringCountMax(this.Intern, ua);
+        int a;
+        a = (int)u;
+        return a;
+    }
+
+    public virtual int Text(Text text, Data data, RangeInt range)
+    {
+        if (!this.InfraInfra.ValidRangeInt(data.Count, range.Index, range.Count))
+        {
+            return -1;
+        }
+
+        long dataCount;
+        dataCount = range.Count;
+        ulong ua;
+        ua = (ulong)dataCount;
+        ulong dataU;
+        dataU = this.InternData;
+        Extern.Data_CountSet(dataU, ua);
+
+        int a;
+        a = this.InternIntern.TextEncodeString(this.Intern, text.Data.Value, text.Range.Index, dataU, data.Value, range.Index);
+        return a;
+    }
+
+    public virtual long DataCountMax(int textCount)
+    {
+        ulong ua;
+        ua = (ulong)textCount;
+        ulong u;
+        u = Extern.TextEncode_DataCountMax(this.Intern, ua);
+        long a;
+        a = (long)u;
+        return a;
+    }
+
+    public virtual long Data(Data data, long index, Text text)
+    {
+        if (!this.TextInfra.ValidRange(text))
+        {
+            return -1;
+        }
+
+        int textCount;
+        textCount = text.Range.Count;
+        ulong ua;
+        ua = (ulong)textCount;
+        ulong textU;
+        textU = this.InternString;
+        Extern.String_CountSet(textU, ua);
+
+        long a;
+        a = this.InternIntern.TextEncodeData(this.Intern, data.Value, index, textU, text.Data.Value, text.Range.Index);
+        return a;
+    }
+}
