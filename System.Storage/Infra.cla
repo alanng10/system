@@ -167,43 +167,44 @@ class Infra : Any
         return a;
     }
 
-    public virtual bool TextWrite(string filePath, string text)
+    maide prudate Bool TextWrite(var String filePath, var String text)
     {
         return this.TextWriteAny(filePath, text, false);
     }
 
-    public virtual bool TextWriteAny(string filePath, string text, bool anyNode)
+    maide prudate Bool TextWriteAny(var String filePath, var String text, var Bool anyNode)
     {
-        TextEncode encode;
-        encode = new TextEncode();
-        encode.Kind = this.TextEncodeKindList.Utf8;
+        var TextEncode encode;
+        encode : new TextEncode;
+        encode.Kind : this.TextEncodeKindList.Utf8;
         encode.Init();
 
-        TextText o;
-        o = this.TextInfra.TextCreateString(text, null);
-        int kk;
-        kk = o.Range.Count;
-        long ka;
-        ka = encode.DataCountMax(kk);
+        var TextText o;
+        o : this.TextInfra.TextCreateString(text, null);
+        var Int kk;
+        kk : o.Range.Count;
+        var Int ka;
+        ka : encode.DataCountMax(kk);
 
-        Data data;
-        data = new Data();
-        data.Count = ka;
+        var Data data;
+        data : new Data;
+        data.Count : ka;
         data.Init();
 
-        long kb;
-        kb = encode.Data(data, 0, o);
+        var Int kb;
+        kb : encode.Data(data, 0, o);
 
         encode.Final();
 
-        long count;
-        count = kb;
-        RangeInt range;
-        range = new RangeInt();
+        var Int count;
+        count : kb;
+        var Range range;
+        range : new Range;
         range.Init();
-        range.Count = count;
-        bool a;
-        a = this.DataWriteRangeAny(filePath, data, range, anyNode);
+        range.Index : 0;
+        range.Count : count;
+        var Bool a;
+        a : this.DataWriteRangeAny(filePath, data, range, anyNode);
         return a;
     }
 
