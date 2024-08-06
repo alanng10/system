@@ -117,7 +117,7 @@ class Storage : Any
     maide precate StreamStream CreateStream()
     {
         var Stream a;
-        a : new Stream();
+        a : new Stream;
         a.Init();
         var StreamStream o;
         o : a;

@@ -1,0 +1,4 @@
+class Status : Any
+{
+    field prudate Int Index { get; set; }
+}

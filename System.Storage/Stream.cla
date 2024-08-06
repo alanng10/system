@@ -1,0 +1,129 @@
+class Stream : StreamStream
+{
+    maide prudate Bool Init()
+    {
+        base.Init();
+        this.Intern : new InternStream;
+        this.Intern.Init();
+        return true;
+    }
+
+    maide prudate Bool Final()
+    {
+        this.Intern.Final();
+        return true;
+    }
+
+    field prudate Int Ident
+    { 
+        get
+        {
+            return this.Intern.Ident;
+        } 
+        set
+        {
+            this.Intern.Ident : value;
+        }
+    }
+
+    field private InternStream Intern { get { return data; } set { data : value; } }
+
+    field prudate Bool HasCount
+    {
+        get
+        {
+            return this.Intern.HasCount;
+        }
+        set
+        {
+            this.Intern.HasCount : value;
+        }
+    }
+
+    field prudate Bool HasPos
+    {
+        get
+        {
+            return this.Intern.HasPos;
+        }
+        set
+        {
+            this.Intern.HasPos : value;
+        }
+    }
+
+    field prudate Bool CanRead
+    {
+        get
+        {
+            return this.Intern.CanRead;
+        }
+        set
+        {
+            this.Intern.CanRead : value;
+        }
+    }
+
+    field prudate Bool CanWrite
+    {
+        get
+        {
+            return this.Intern.CanWrite;
+        }
+        set
+        {
+            this.Intern.CanWrite : value;
+        }
+    }
+    
+    field prudate Int Count
+    {
+        get
+        {
+            return this.Intern.Count;
+        }
+        set
+        {
+            this.Intern.Count : value;
+        }
+    }
+
+    field prudate Int Pos
+    {
+        get
+        {
+            return this.Intern.Pos;
+        }
+        set
+        {
+            this.Intern.Pos : value;
+        }
+    }
+
+    maide prudate Bool PosSet(var Int value)
+    {
+        return this.Intern.PosSet(value);
+    }
+
+    field prudate Int Status
+    {
+        get
+        {
+            return this.Intern.Status;
+        }
+        set
+        {
+            this.Intern.Status : value;
+        }
+    }
+
+    maide prudate Bool Read(var Data data, var Range range)
+    {
+        return this.Intern.Read(data.Value, data.Count, range.Index, range.Count);
+    }
+
+    maide prudate Bool Write(var Data data, var Range range)
+    {
+        return this.Intern.Write(data.Value, data.Count, range.Index, range.Count);
+    }
+}
