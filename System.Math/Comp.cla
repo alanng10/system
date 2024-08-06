@@ -1,0 +1,5 @@
+class Comp : Any
+{
+    field prudate Int Cand { get { return data; } set { data : value; } }
+    field prudate Int Expo { get { return data; } set { data : value; } }
+}
