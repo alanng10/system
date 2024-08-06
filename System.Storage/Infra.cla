@@ -249,62 +249,62 @@ class Infra : Any
         return o;
     }
 
-    public virtual int EntryPathNameCombine(TextText entryPath, Compare compare)
+    maide prudate Int EntryPathNameCombine(var TextText entryPath, var Compare compare)
     {
-        int a;
-        a = this.TextInfra.LastIndex(entryPath, this.TextSlash, compare);
+        var Int a;
+        a : this.TextInfra.LastIndex(entryPath, this.TextSlash, compare);
         return a;
     }
 
-    public virtual int EntryNameExtensionDot(TextText entryName, Compare compare)
+    maide prudate Int EntryNameExtensionDot(var TextText entryName, var Compare compare)
     {
-        int a;
-        a = this.TextInfra.LastIndex(entryName, this.TextDot, compare);
+        var Int a;
+        a : this.TextInfra.LastIndex(entryName, this.TextDot, compare);
         return a;
     }
 
-    public virtual bool IsRelativePath(TextText entryPath, Compare compare)
+    maide prudate Bool IsRelativePath(var TextText entryPath, var Compare compare)
     {
-        TextInfra textInfra;
-        textInfra = this.TextInfra;
+        var TextInfra textInfra;
+        textInfra : this.TextInfra;
 
-        int k;
-        k = textInfra.Index(entryPath, this.TextSlash, compare);
-        if (k == -1)
+        var Int k;
+        k : textInfra.Index(entryPath, this.TextSlash, compare);
+        inf (k = 0sn1)
         {
             return true;
         }
 
-        if (k == 0)
+        inf (k = 0)
         {
             return false;
         }
 
-        Range range;
-        range = entryPath.Range;
+        var Range range;
+        range : entryPath.Range;
 
-        int indexA;
-        int countA;
-        indexA = range.Index;
-        countA = range.Count;
+        var Int indexA;
+        var Int countA;
+        indexA : range.Index;
+        countA : range.Count;
 
-        TextText colon;
-        colon = this.TextColon;
+        var TextText colon;
+        colon : this.TextColon;
 
-        int colonCount;
-        colonCount = colon.Range.Count;
+        var Int colonCount;
+        colonCount : colon.Range.Count;
 
-        range.Index = indexA + k - colonCount;
-        range.Count = colonCount;
+        range.Index : indexA + k - colonCount;
+        range.Count : colonCount;
 
-        bool b;
-        b = textInfra.Equal(entryPath, colon, compare);
+        var Bool b;
+        b : textInfra.Equal(entryPath, colon, compare);
         
-        range.Index = indexA;
-        range.Count = countA;
+        range.Index : indexA;
+        range.Count : countA;
 
-        bool a;
-        a = !b;
+        var Bool a;
+        a : !b;
         return a;
     }
 }
