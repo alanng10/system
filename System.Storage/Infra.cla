@@ -37,9 +37,6 @@ class Infra : Any
         mode : new Mode;
         mode.Init();
         mode.Read : true;
-        mode.Write : false;
-        mode.New : false;
-        mode.Exist : false;
 
         storage.Path : filePath;
         storage.Mode : mode;
@@ -74,49 +71,50 @@ class Infra : Any
         return o;
     }
 
-    public virtual bool DataWrite(string filePath, Data data)
+    maide prudate Bool DataWrite(var String filePath, var Data data)
     {
         return this.DataWriteAny(filePath, data, false);
     }
 
-    public virtual bool DataWriteAny(string filePath, Data data, bool anyNode)
+    maide prudate Bool DataWriteAny(var String filePath, var Data data, var Bool anyNode)
     {
-        RangeInt range;
-        range = new RangeInt();
+        var Range range;
+        range : new Range;
         range.Init();
-        range.Count = data.Count;
+        range.Index : 0;
+        range.Count : data.Count;
         return this.DataWriteRangeAny(filePath, data, range, anyNode);
     }
 
-    public virtual bool DataWriteRange(string filePath, Data data, RangeInt range)
+    maide prudate Bool DataWriteRange(var String filePath, var Data data, var Range range)
     {
         return this.DataWriteRangeAny(filePath, data, range, false);
     }
 
-    public virtual bool DataWriteRangeAny(string filePath, Data data, RangeInt range, bool anyNode)
+    maide prudate Bool DataWriteRangeAny(var String filePath, var Data data, var Range range, var Bool anyNode)
     {
-        Storage storage;
-        storage = new Storage();
+        var Storage storage;
+        storage : new Storage;
         storage.Init();
-        storage.AnyNode = anyNode;
+        storage.AnyNode : anyNode;
 
-        Mode mode;
-        mode = new Mode();
+        var Mode mode;
+        mode : new Mode;
         mode.Init();
-        mode.Write = true;
+        mode.Write : true;
 
-        storage.Path = filePath;
-        storage.Mode = mode;
+        storage.Path : filePath;
+        storage.Mode : mode;
         storage.Open();
 
-        bool o;
-        o = false;
-        if (storage.Status == this.StorageStatusList.NoError)
+        var Bool o;
+        o : false;
+        inf (storage.Status = this.StorageStatusList.NoError)
         {
-            StreamStream stream;
-            stream = storage.Stream;
+            var StreamStream stream;
+            stream : storage.Stream;
             stream.Write(data, range);
-            if (stream.Status == 0)
+            inf (stream.Status = 0)
             {
                 o = true;
             }
@@ -126,45 +124,46 @@ class Infra : Any
         return o;
     }
 
-    public virtual string TextRead(string filePath)
+    maide prudate String TextRead(var String filePath)
     {
         return this.TextReadAny(filePath, false);
     }
 
-    public virtual string TextReadAny(string filePath, bool anyNode)
+    maide prudate String TextReadAny(var String filePath, var Bool anyNode)
     {
-        Data data;
-        data = this.DataReadAny(filePath, anyNode);
-        if (data == null)
+        var Data data;
+        data : this.DataReadAny(filePath, anyNode);
+        inf (data = null)
         {
             return null;
         }
-        TextEncode encode;
-        encode = new TextEncode();
-        encode.Kind = this.TextEncodeKindList.Utf8;
+        var TextEncode encode;
+        encode : new TextEncode;
+        encode.Kind : this.TextEncodeKindList.Utf8;
         encode.Init();
 
-        int ka;
-        ka = encode.TextCountMax(data.Count);
+        var Int ka;
+        ka : encode.TextCountMax(data.Count);
 
-        TextText text;
-        text = this.TextInfra.TextCreate(ka);
-        RangeInt range;
-        range = new RangeInt();
+        var TextText text;
+        text : this.TextInfra.TextCreate(ka);
+        var Range range;
+        range : new Range;
         range.Init();
-        range.Count = data.Count;
-        int kb;
-        kb = encode.Text(text, data, range);
+        range.Index : 0;
+        range.Count : data.Count;
+        var Int kb;
+        kb : encode.Text(text, data, range);
 
         encode.Final();
 
-        int count;
-        count = kb;
+        var Int count;
+        count : kb;
 
-        text.Range.Count = count;
+        text.Range.Count : count;
 
-        string a;
-        a = this.TextInfra.StringCreate(text);
+        var String a;
+        a : this.TextInfra.StringCreate(text);
         return a;
     }
 
