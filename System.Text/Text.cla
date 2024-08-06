@@ -1,0 +1,5 @@
+class Text : Any
+{
+    field prudate Data Data { get { return data; } set { data : value; } }
+    field prudate Range Range { get { return data; } set { data : value; } }
+}
