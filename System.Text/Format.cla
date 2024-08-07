@@ -288,69 +288,72 @@ class Format : Any
         return true;
     }
 
-    public virtual bool ResultBool(Text result, bool value, int varCase, int valueWriteCount, int valueStart, int valueIndex)
+    maide prudate Bool ResultBool(var Text result, var Bool value, var Int varCase, var Int valueWriteCount, var Int valueStart, var Int valueIndex)
     {
-        Infra textInfra;
-        textInfra = this.TextInfra;
+        var Infra textInfra;
+        textInfra : this.TextInfra;
 
-        CharForm charForm;
-        charForm = this.CharForm;
+        var CharForm charForm;
+        charForm : this.CharForm;
 
-        Data destData;
-        destData = result.Data;
-        int destStart;
-        destStart = result.Range.Index;
+        var Data destData;
+        destData : result.Data;
+        var Int destStart;
+        destStart : result.Range.Index;
 
-        string source;
-        source = null;
-        if (!value)
+        var String source;
+        inf (!value)
         {
-            source = textInfra.BoolFalseString;
+            source : textInfra.BoolFalseString;
         }
-        if (value)
+        inf (value)
         {
-            source = textInfra.BoolTrueString;
+            source : textInfra.BoolTrueString;
         }
 
-        int destIndex;
-        destIndex = destStart + valueStart;
-        char ouc;
-        ouc = (char)0;
-        char oc;
-        oc = (char)0;
-        int aa;
-        aa = 0;
-        int index;
-        index = 0;
-        int count;
-        count = valueWriteCount;
-        int i;
-        i = 0;
+        var Int destIndex;
+        destIndex : destStart + valueStart;
+        var Int ouc;
+        ouc : 0;
+        var Int oc;
+        oc : 0;
+        var Int aa;
+        aa : 0;
+        var Int index;
+        index : 0;
+        var Int lowerLetterA;
+        lowerLetterA : "a".Char(0);
+        var Int upperLetterA;
+        upperLetterA : "A".Char(0);
+        var Int count;
+        count : valueWriteCount;
+        var Int i;
+        i : 0;
         while (i < count)
         {
-            index = i + valueIndex;
+            index : i + valueIndex;
 
-            ouc = source[index];
-            aa = ouc;
+            ouc : source.Char(index);
+            aa : ouc;
 
-            if (varCase == 1)
+            inf (varCase = 1)
             {
-                if (index == 0)
+                inf (index = 0)
                 {
-                    aa = ouc - 'a' + 'A';
+                    aa : (ouc - lowerLetterA) + upperLetterA;
                 }
             }
-            if (varCase == 2)
+            inf (varCase == 2)
             {
-                aa = ouc - 'a' + 'A';
+                aa : (ouc - lowerLetterA) + upperLetterA;
             }
-            oc = (char)aa;
+            oc : aa;
 
-            oc = (char)charForm.Execute(oc);
+            oc : charForm.Execute(oc);
 
             textInfra.DataCharSet(destData, destIndex + i, oc);
 
-            i = i + 1;
+            i : i + 1;
         }
         return true;
     }
