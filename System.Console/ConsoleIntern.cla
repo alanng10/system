@@ -6,6 +6,7 @@ class ConsoleIntern : Any
         this.InternIntern : share InternIntern;
         this.Extern : share Extern;
         this.InternInfra : share InternInfra;
+        this.Intern : 0;
         return true;
     }
 
