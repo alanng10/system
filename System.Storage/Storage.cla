@@ -126,6 +126,9 @@ class Storage : Any
 
     maide private Int InternMode(var Mode mode)
     {
+        var Extern extern;
+        extern : this.Extern;
+        
         var Int varShare;
         varShare : this.Extern.Infra_Share();
         var Int stat;
@@ -135,19 +138,19 @@ class Storage : Any
         k : 0;
         inf (mode.Read)
         {
-            k = k | this.Extern.Stat_StorageModeRead(stat);
+            k : k | extern.Stat_StorageModeRead(stat);
         }
         inf (mode.Write)
         {
-            k = k | this.Extern.Stat_StorageModeWrite(stat);
+            k : k | extern.Stat_StorageModeWrite(stat);
         }
         inf (mode.New)
         {
-            k = k | this.Extern.Stat_StorageModeNew(stat);
+            k : k | extern.Stat_StorageModeNew(stat);
         }
         inf (mode.Exist)
         {
-            k = k | this.Extern.Stat_StorageModeExisting(stat);
+            k : k | extern.Stat_StorageModeExisting(stat);
         }
         return k;
     }
