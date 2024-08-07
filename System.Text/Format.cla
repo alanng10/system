@@ -80,14 +80,14 @@ class Format : Any
         return true;
     }
 
-    public virtual int ExecuteCount(Text varBase, Array argList)
+    maide prudate Int ExecuteCount(var Text varBase, var Array argList)
     {
-        int count;
-        count = argList.Count;
-        int k;
-        k = 0;
-        int i;
-        i = 0;
+        var Int count;
+        count : argList.Count;
+        var Int k;
+        k : 0;
+        var Int i;
+        i : 0;
         while (i < count)
         {
             FormatArg arg;
