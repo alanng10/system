@@ -220,75 +220,70 @@ class Format : Any
             return false;
         }
 
-        int kind;
-        kind = arg.Kind;
-        FormatCountState state;
-        state = (FormatCountState)this.CountState.GetAt(kind);
+        var Int kind;
+        kind : arg.Kind;
+        var FormatCountState state;
+        state : cast FormatCountState(this.CountState.Get(kind));
 
-        state.Arg = arg;
+        state.Arg : arg;
         state.Execute();
 
-        Value aa;
-        aa = (Value)state.Result;
+        var Int aa;
+        aa : cast Int(state.Result);
 
-        int valueCount;
-        valueCount = aa.Mid;
+        var Int valueCount;
+        valueCount : aa;
 
-        int fieldWidth;
-        fieldWidth = arg.FieldWidth;
+        var Int fieldWidth;
+        fieldWidth : arg.FieldWidth;
 
-        int maxWidth;
-        maxWidth = arg.MaxWidth;
+        var Int maxWidth;
+        maxWidth : arg.MaxWidth;
 
-        long u;
-        u = maxWidth;
-        u = u << 4;
-        u = u >> 4;
+        var Int count;
+        count : valueCount;
 
-        int count;
-        count = valueCount;
-
-        if (count < fieldWidth)
+        inf (count < fieldWidth)
         {
-            count = fieldWidth;
+            count : fieldWidth;
         }
 
-        if (!(u == -1))
+        inf (!(maxWidth = null))
         {
-            if (maxWidth < count)
+            inf (maxWidth < count)
             {
-                count = maxWidth;
+                count : maxWidth;
             }
         }
 
-        arg.HasCount = true;
-        arg.ValueCount = valueCount;
-        arg.Count = count;
+        arg.HasCount : true;
+        arg.ValueCount : valueCount;
+        arg.Count : count;
         return true;
     }
 
-    public virtual bool ExecuteArgResult(FormatArg arg, Text result)
+    maide prudate Bool ExecuteArgResult(var FormatArg arg, var Text result)
     {
-        if (!this.ValidArg(arg))
+        inf (!this.ValidArg(arg))
         {
             return false;
         }
-        if (!this.TextInfra.ValidRange(result))
+        inf (!this.TextInfra.ValidRange(result))
         {
             return false;
         }
-        if (result.Range.Count < arg.Count)
+        inf (result.Range.Count < arg.Count)
         {
             return false;
         }
 
-        int kind;
-        kind = arg.Kind;
-        FormatResultState state;
-        state = (FormatResultState)this.ResultState.GetAt(kind);
+        var Int kind;
+        kind : arg.Kind;
+        var FormatResultState state;
+        state : cast FormatResultState(this.ResultState.Get(kind));
 
-        state.Arg = arg;
-        state.ArgResult = result;
+        state.Arg : arg;
+        state.ArgResult : result;
         state.Execute();
         return true;
     }
@@ -563,30 +558,58 @@ class Format : Any
         return a;
     }
 
-    protected virtual bool ValidArg(FormatArg arg)
+    maide prudate Bool ValidArg(var FormatArg arg)
     {
-        int kind;
+        var Int kind;
         kind = arg.Kind;
 
-        if (!this.ValidKind(kind))
+        inf (!this.ValidKind(kind))
         {
             return false;
         }
-
-        if (kind == 1 | kind == 2)
+        
+        inf (arg.Value = null)
         {
-            if (!this.ValidIntBase(arg.Base))
+            return false;
+        }
+        
+        inf (kind = 0)
+        {
+            var Bool aaa;
+            aaa : cast Bool(arg.Value);
+            inf (aaa = null)
             {
-                return false;
+                return false;   
             }
         }
-        if (kind == 3)
+
+        inf (kind = 1 | kind = 2 | kind = 4)
         {
-            if (arg.ValueText == null)
+            var Int aab;
+            aab : cast Int(arg.Value);
+            inf (aab = null)
             {
-                return false;
+                return false;   
             }
-            if (!this.TextInfra.ValidRange(arg.ValueText))
+
+            inf (kind = 1 | kind = 2)
+            {
+                inf (!this.ValidIntBase(arg.Base))
+                {
+                    return false;
+                }
+            }
+        }
+        inf (kind = 3)
+        {
+            var Text aac;
+            aac : cast Text(arg.Value);
+            inf (aac = null)
+            {
+                return false;   
+            }
+            
+            inf (!this.TextInfra.ValidRange(aac))
             {
                 return false;
             }
@@ -594,12 +617,12 @@ class Format : Any
         return true;
     }
 
-    protected virtual bool ValidKind(int kind)
+    maide prudate Bool ValidKind(var Int kind)
     {
         return this.InfraInfra.ValidIndex(this.KindCount, kind);
     }
 
-    protected virtual bool ValidIntBase(int varBase)
+    maide prudate Bool ValidIntBase(var Int varBase)
     {
         return !(varBase < 2 | 16 < varBase);
     }
