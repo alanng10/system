@@ -340,12 +340,12 @@ class Format : Any
             {
                 inf (index = 0)
                 {
-                    aa : (ouc - lowerLetterA) + upperLetterA;
+                    aa : ouc - lowerLetterA + upperLetterA;
                 }
             }
             inf (varCase = 2)
             {
-                aa : (ouc - lowerLetterA) + upperLetterA;
+                aa : ouc - lowerLetterA + upperLetterA;
             }
             oc : aa;
 
@@ -492,14 +492,14 @@ class Format : Any
             {
                 inf (textInfra.IsLetter(ouc, true))
                 {
-                    aa : (ouc - upperLetterA) + lowerLetterA;
+                    aa : ouc - upperLetterA + lowerLetterA;
                 }
             }
             inf (varCase = 2)
             {
                 inf (textInfra.IsLetter(ouc, false))
                 {
-                    aa : (ouc - lowerLetterA) + upperLetterA;
+                    aa : ouc - lowerLetterA + upperLetterA;
                 }
             }
             oc : aa;
