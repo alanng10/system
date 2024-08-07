@@ -86,7 +86,7 @@ class Encode : Any
         return a;
     }
 
-    maide prudate Ints DataCountMax(var Int textCount)
+    maide prudate Int DataCountMax(var Int textCount)
     {
         var Int a;
         a : this.Extern.TextEncode_DataCountMax(this.Intern, textCount);
