@@ -91,7 +91,7 @@ class Format : Any
         while (i < count)
         {
             var FormatArg arg;
-            arg : cast FormatArg(argList.GetAt(i));
+            arg : cast FormatArg(argList.Get(i));
             
             inf (!arg.HasCount)
             {
@@ -166,7 +166,7 @@ class Format : Any
             while ((!b) & (argIndex < argCount))
             {
                 var FormatArg arg;
-                arg : cast FormatArg(argList.GetAt(argIndex));
+                arg : cast FormatArg(argList.Get(argIndex));
 
                 var Int k;
                 k : arg.Pos;

@@ -73,6 +73,6 @@ class StatusList : Any
 
     maide prudate Status Get(var Int index)
     {
-        return cast Status(this.Array.GetAt(index));
+        return cast Status(this.Array.Get(index));
     }
 }
