@@ -41,8 +41,8 @@ class Math : Any
         u : this.InternComp;
         this.InternIntern.MathComp(this.Intern, u, value);
 
-        result.Cand : u.Significand;
-        result.Expo : u.Exponent;
+        result.Cand : u.Cand;
+        result.Expo : u.Expo;
         return true;
     }
 
