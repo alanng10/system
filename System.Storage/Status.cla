@@ -1,4 +1,4 @@
 class Status : Any
 {
-    field prudate Int Index { get; set; }
+    field prudate Int Index { get { return data; } set { data : value; } }
 }

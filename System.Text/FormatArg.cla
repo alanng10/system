@@ -1,0 +1,16 @@
+class FormatArg : Any
+{
+    field prudate Int Pos { get { return data; } set { data : value; } }
+    field prudate Int Kind { get { return data; } set { data : value; } }
+    field prudate Any Value { get { return data; } set { data : value; } }
+    field prudate Bool AlignLeft { get { return data; } set { data : value; } }
+    field prudate Int FieldWidth { get { return data; } set { data : value; } }
+    field prudate Int MaxWidth { get { return data; } set { data : value; } }
+    field prudate Int Base { get { return data; } set { data : value; } }
+    field prudate Int Case { get { return data; } set { data : value; } }
+    field prudate Int Sign { get { return data; } set { data : value; } }
+    field prudate Int FillChar { get { return data; } set { data : value; } }
+    field prudate Bool HasCount { get { return data; } set { data : value; } }
+    field prudate Int ValueCount { get { return data; } set { data : value; } }
+    field prudate Int Count { get { return data; } set { data : value; } }
+}
