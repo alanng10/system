@@ -513,53 +513,51 @@ class Format : Any
         return true;
     }
 
-    public virtual bool ResultFill(Text dest, int fillIndex, int fillCount, char fillChar)
+    maide prudate Bool ResultFill(var Text dest, var Int fillIndex, var Int fillCount, var Int fillChar)
     {
-        Infra textInfra;
-        textInfra = this.TextInfra;
-        Data destData;
-        destData = dest.Data;
-        int destStart;
-        destStart = dest.Range.Index;
-        int destIndex;
-        destIndex = destStart + fillIndex;
-        int index;
-        index = 0;
-        int count;
-        count = fillCount;
-        int i;
-        i = 0;
+        var Infra textInfra;
+        textInfra : this.TextInfra;
+        var Data destData;
+        destData : dest.Data;
+        var Int destStart;
+        destStart : dest.Range.Index;
+        var Int destIndex;
+        destIndex : destStart + fillIndex;
+        var Int index;
+        index : 0;
+        var Int count;
+        count : fillCount;
+        var Int i;
+        i : 0;
         while (i < count)
         {
-            index = destIndex + i;
+            index : destIndex + i;
             textInfra.DataCharSet(destData, index, fillChar);
-            i = i + 1;
+            i : i + 1;
         }
         return true;
     }
 
-    public virtual int IntDigitCount(ulong value, int varBase)
+    maide prudate Int IntDigitCount(var Int value, var Int varBase)
     {
-        int digitCount;
-        digitCount = 0;
+        var Int digitCount;
+        digitCount : 0;
 
-        ulong ca;
-        ca = (ulong)varBase;
-        ulong oa;
-        oa = value;
+        var Int oa;
+        oa : value;
         while (0 < oa)
         {
-            oa = oa / ca;
-            digitCount = digitCount + 1;
+            oa : oa / varBase;
+            digitCount : digitCount + 1;
         }
 
-        if (digitCount == 0)
+        inf (digitCount = 0)
         {
-            digitCount = 1;
+            digitCount : 1;
         }
 
-        int a;
-        a = digitCount;
+        var Int a;
+        a : digitCount;
         return a;
     }
 
