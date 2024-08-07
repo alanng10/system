@@ -1,0 +1,6 @@
+class Inn : Any
+{
+    maide prudate String Read()
+    {
+    }
+}

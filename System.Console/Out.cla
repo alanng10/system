@@ -1,0 +1,6 @@
+class Out : Any
+{
+    maide prudate Bool Write(var String o)
+    {
+    }
+}
