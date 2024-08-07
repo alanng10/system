@@ -90,132 +90,132 @@ class Format : Any
         i : 0;
         while (i < count)
         {
-            FormatArg arg;
-            arg = (FormatArg)argList.GetAt(i);
+            var FormatArg arg;
+            arg : cast FormatArg(argList.GetAt(i));
             
-            if (!arg.HasCount)
+            inf (!arg.HasCount)
             {
                 this.ExecuteArgCount(arg);
             }
 
-            int ka;
-            ka = arg.Count;
+            var Int ka;
+            ka : arg.Count;
 
-            k = k + ka;
+            k : k + ka;
 
-            i = i + 1;
+            i : i + 1;
         }
 
-        int baseCount;
-        baseCount = varBase.Range.Count;
+        var Int baseCount;
+        baseCount : varBase.Range.Count;
 
-        k = k + baseCount;
+        k : k + baseCount;
 
-        int a;
-        a = k;
+        var Int a;
+        a : k;
         return a;
     }
 
-    public virtual bool ExecuteResult(Text varBase, Array argList, Text result)
+    maide prudate Bool ExecuteResult(var Text varBase, var Array argList, var Text result)
     {
-        Infra textInfra;
-        textInfra = this.TextInfra;
-        if (!textInfra.ValidRange(varBase))
+        var Infra textInfra;
+        textInfra : this.TextInfra;
+        inf (!textInfra.ValidRange(varBase))
         {
             return false;
         }
-        if (!textInfra.ValidRange(result))
+        inf (!textInfra.ValidRange(result))
         {
             return false;
         }
 
-        Data baseData;
-        baseData = varBase.Data;
-        Range baseRange;
-        baseRange = varBase.Range;
-        int baseStart;
-        baseStart = baseRange.Index;
-        int baseCount;
-        baseCount = baseRange.Count;
+        var Data baseData;
+        baseData : varBase.Data;
+        var Range baseRange;
+        baseRange : varBase.Range;
+        var Int baseStart;
+        baseStart : baseRange.Index;
+        var Int baseCount;
+        baseCount : baseRange.Count;
 
-        int argCount;
-        argCount = argList.Count;
+        var Int argCount;
+        argCount : argList.Count;
 
-        Data resultData;
-        resultData = result.Data;
-        Range resultRange;
-        resultRange = result.Range;
-        int resultStart;
-        resultStart = resultRange.Index;
-        int resultCount;
-        resultCount = resultRange.Count;
+        var Data resultData;
+        resultData : result.Data;
+        var Range resultRange;
+        resultRange : result.Range;
+        var Int resultStart;
+        resultStart : resultRange.Index;
+        var Int resultCount;
+        resultCount : resultRange.Count;
 
-        int count;
-        count = baseCount + 1;
-        int resultIndex;
-        resultIndex = 0;
-        int argIndex;
-        argIndex = 0;
-        int i;
-        i = 0;
+        var Int count;
+        count : baseCount + 1;
+        var Int resultIndex;
+        resultIndex : 0;
+        var Int argIndex;
+        argIndex : 0;
+        var Int i;
+        i : 0;
         while (i < count)
         {
-            bool b;
-            b = false;
+            var Bool b;
+            b : false;
 
             while ((!b) & (argIndex < argCount))
             {
-                FormatArg arg;
-                arg = (FormatArg)argList.GetAt(argIndex);
+                var FormatArg arg;
+                arg : cast FormatArg(argList.GetAt(argIndex));
 
-                int k;
-                k = arg.Pos;
+                var Int k;
+                k : arg.Pos;
 
-                bool ba;
-                ba = (i == k);
-                if (ba)
+                var Bool ba;
+                ba : (i = k);
+                inf (ba)
                 {
-                    int countA;
-                    countA = arg.Count;
+                    var Int countA;
+                    countA : arg.Count;
 
-                    int oa;
-                    oa = resultStart + resultIndex;
-                    resultRange.Index = oa;
-                    resultRange.Count = countA;
+                    var Int oa;
+                    oa : resultStart + resultIndex;
+                    resultRange.Index : oa;
+                    resultRange.Count : countA;
                     
                     this.ExecuteArgResult(arg, result);
 
-                    resultRange.Index = resultStart;
-                    resultRange.Count = resultCount;
+                    resultRange.Index : resultStart;
+                    resultRange.Count : resultCount;
 
-                    resultIndex = resultIndex + countA;
+                    resultIndex : resultIndex + countA;
 
-                    argIndex = argIndex + 1;
+                    argIndex : argIndex + 1;
                 }
-                if (!ba)
+                inf (!ba)
                 {
-                    b = true;
+                    b : true;
                 }
             }
 
-            if (!(i == baseCount))
+            inf (!(i = baseCount))
             {
-                char oc;
-                oc = textInfra.DataCharGet(baseData, baseStart + i);
+                var Int oc;
+                oc : textInfra.DataCharGet(baseData, baseStart + i);
 
                 textInfra.DataCharSet(resultData, resultStart + resultIndex, oc);
                 
-                resultIndex = resultIndex + 1;
+                resultIndex : resultIndex + 1;
             }
 
-            i = i + 1;
+            i : i + 1;
         }
         return true;
     }
 
-    public virtual bool ExecuteArgCount(FormatArg arg)
+    maide prudate Bool ExecuteArgCount(var FormatArg arg)
     {
-        if (!this.ValidArg(arg))
+        inf (!this.ValidArg(arg))
         {
             return false;
         }
