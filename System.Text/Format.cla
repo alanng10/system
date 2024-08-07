@@ -343,7 +343,7 @@ class Format : Any
                     aa : (ouc - lowerLetterA) + upperLetterA;
                 }
             }
-            inf (varCase == 2)
+            inf (varCase = 2)
             {
                 aa : (ouc - lowerLetterA) + upperLetterA;
             }
@@ -426,9 +426,9 @@ class Format : Any
 
             inf ((!(index < valueIndex)) & index < end)
             {
-                ka = k - j * varBase;
+                ka : k - j * varBase;
 
-                digit = ka;
+                digit : ka;
 
                 c : textInfra.DigitChar(digit, letterDigitStart);
 
@@ -564,7 +564,7 @@ class Format : Any
     maide prudate Bool ValidArg(var FormatArg arg)
     {
         var Int kind;
-        kind = arg.Kind;
+        kind : arg.Kind;
 
         inf (!this.ValidKind(kind))
         {
