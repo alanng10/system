@@ -358,92 +358,90 @@ class Format : Any
         return true;
     }
 
-    public virtual bool ResultInt(Text result, ulong value, int varBase, int varCase, int valueCount, int valueWriteCount, int valueStart, int valueIndex)
+    maide prudate Bool ResultInt(var Text result, var Int value, var Int varBase, var Int varCase, var Int valueCount, var Int valueWriteCount, var Int valueStart, var Int valueIndex)
     {
-        Infra textInfra;
-        textInfra = this.TextInfra;
+        var Infra textInfra;
+        textInfra : this.TextInfra;
 
-        CharForm charForm;
-        charForm = this.CharForm;
+        var CharForm charForm;
+        charForm : this.CharForm;
 
-        Data destData;
-        destData = result.Data;
-        int destStart;
-        destStart = result.Range.Index;
+        var Data destData;
+        destData : result.Data;
+        var Int destStart;
+        destStart : result.Range.Index;
 
-        int destIndex;
-        destIndex = destStart + valueStart;
+        var Int destIndex;
+        destIndex : destStart + valueStart;
 
-        if (value == 0)
+        inf (value = 0)
         {
-            if (!(valueWriteCount == 0))
+            inf (!(valueWriteCount = 0))
             {
-                char occ;
-                occ = '0';
+                var Int occ;
+                occ : "0".Char(0);
 
-                occ = (char)charForm.Execute(occ);
+                occ : charForm.Execute(occ);
 
                 textInfra.DataCharSet(destData, destIndex, occ);
             }
             return true;
         }
 
-        int end;
-        end = valueIndex + valueWriteCount;
+        var Int end;
+        end : valueIndex + valueWriteCount;
 
-        bool upperCase;
-        upperCase = !(varCase == 0);
-        char letterDigitStart;
-        letterDigitStart = 'a';
-        if (upperCase)
+        var Bool upperCase;
+        upperCase : !(varCase = 0);
+        var Int letterDigitStart;
+        letterDigitStart : "a".Char(0);
+        inf (upperCase)
         {
-            letterDigitStart = 'A';
+            letterDigitStart : "A".Char(0);
         }
-        ulong ca;
-        ca = (ulong)varBase;
-        ulong k;
-        k = value;
-        ulong j;
-        j = 0;
-        ulong ka;
-        ka = 0;
-        int digit;
-        digit = 0;
-        int oa;
-        oa = 0;
-        char c;
-        c = (char)0;
+        var Int k;
+        k : value;
+        var Int j;
+        j : 0;
+        var Int ka;
+        ka : 0;
+        var Int digit;
+        digit : 0;
+        var Int oa;
+        oa : 0;
+        var Int c;
+        c : 0;
 
-        int index;
-        index = 0;
-        int count;
-        count = valueCount;
-        int i;
-        i = 0;
+        var Int index;
+        index : 0;
+        var Int count;
+        count : valueCount;
+        var Int i;
+        i : 0;
         while (i < count)
         {
-            j = k / ca;
+            j : k / varBase;
 
-            index = count - 1 - i;
+            index : (count - 1) - i;
 
-            if ((!(index < valueIndex)) & index < end)
+            inf ((!(index < valueIndex)) & index < end)
             {
-                ka = k - j * ca;
+                ka = k - j * varBase;
 
-                digit = (int)ka;
+                digit = ka;
 
-                c = textInfra.DigitChar(digit, letterDigitStart);
+                c : textInfra.DigitChar(digit, letterDigitStart);
 
-                c = (char)charForm.Execute(c);
+                c : charForm.Execute(c);
 
-                oa = index - valueIndex;
+                oa : index - valueIndex;
 
                 textInfra.DataCharSet(destData, destIndex + oa, c);
             }
 
-            k = j;
+            k : j;
 
-            i = i + 1;
+            i : i + 1;
         }
         return true;
     }
