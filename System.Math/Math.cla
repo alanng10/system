@@ -51,13 +51,13 @@ class Math : Any
         var Int u;
         u = this.Extern.Math_Less(this.Intern, valueA, valueB);
 
-        inf (u = 0sn1)
+        inf (u = null)
         {
             return null;
         }
 
-        var Int a;
-        a : !(u = 0)
+        var Bool a;
+        a : !(u = 0);
         return a;
     }
 }
