@@ -68,6 +68,8 @@ class StringInn : Inn
         range.Index : index;
         range.Count : countA;
 
+        var String a;
+
         var Int k;
         k : textInfra.Index(text, this.TextNewLine, this.TextCompare);
 
