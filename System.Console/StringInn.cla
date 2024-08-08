@@ -36,7 +36,7 @@ class StringInn : Inn
     field precate TextText Text { get { return data; } set { data : value; } }
     field precate TextCompare TextCompare { get { return data; } set { data : value; } }
     field precate CharForm CharForm { get { return data; } set { data : value; } }
-    field precate Compare CharCompare { get { return data; } set { data : value; } }
+    field precate IntCompare CharCompare { get { return data; } set { data : value; } }
     field precate StringData StringData { get { return data; } set { data : value; } }
     field precate TextText TextNewLine { get { return data; } set { data : value; } }
     
