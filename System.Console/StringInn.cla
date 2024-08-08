@@ -1,8 +1,16 @@
 class StringInn : Inn
 {
+    maide prudate Bool Init()
+    {
+        base.Init();
+        this.Range = new Range;
+        this.Range.Init();
+        return true;
+    }
+    
     field prudate String String { get { return data; } set { data : value; } }
-
     field prudate Int Index { get { return data; } set { data : value; } }
+    field precate Range Range { get { return data; } set { data : value; } }
 
     maide prudate String Read()
     {
@@ -10,6 +18,8 @@ class StringInn : Inn
         o : this.String;
         var Int index;
         index : this.Index;
+        var Range range;
+        range : this.Range;
 
         var String a;
 
@@ -20,14 +30,21 @@ class StringInn : Inn
         b : (u < 0);
         inf (b)
         {
-            a : o.Substring(index, null);
+            range.Index = index;
+            range.Count = null;
+            a : o.Substring(range);
+            
             index : index + a.Count;
         }
         inf (!b)
         {
             var Int count;
             count : u - index;
-            a : o.Substring(index, count);
+            
+            range.Index = index;
+            range.Count = count;
+            a : o.Substring(range);
+            
             index : index + count + 1;
         }
 
