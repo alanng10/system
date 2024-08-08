@@ -1,0 +1,31 @@
+class StringOut : Out
+{
+    maide prudate Bool Init()
+    {
+        base.Init();
+        this.InfraInfra : share InfraInfra;
+        this.Sj : new StringJoin;
+        this.Sj.Init();
+        return true;
+    }
+
+    field precate InfraInfra InfraInfra { get { return data; } set { data : value; } }
+    field private StringJoin Sj { get { return data; } set { data : value; } }
+
+    maide prudate Bool Write(var String o)
+    {
+        this.InfraInfra.StringJoinString(this.Sj, o);
+        return true;
+    }
+
+    maide prudate Bool Clear()
+    {
+        this.Sj.Clear();
+        return true;
+    }
+
+    maide prudate String Result()
+    {
+        return this.Sj.Result();
+    }
+}
