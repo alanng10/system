@@ -24,7 +24,7 @@ class Math : Any
 
         var Int a;
         a : this.Extern.Math_Value(this.Intern, aa, ab);
-        
+
         return a;
     }
 

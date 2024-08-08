@@ -95,7 +95,7 @@ class Encode : Any
 
     maide prudate Int Data(var Data data, var Int index, var Text text)
     {
-        if (!this.TextInfra.ValidRange(text))
+        inf (!this.TextInfra.ValidRange(text))
         {
             return null;
         }
