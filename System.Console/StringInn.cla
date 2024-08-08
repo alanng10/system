@@ -3,47 +3,91 @@ class StringInn : Inn
     maide prudate Bool Init()
     {
         base.Init();
-        this.Range : new Range;
-        this.Range.Init();
+        this.TextInfra : share TextInfra;
+
+        this.StringData : new StringData;
+        this.StringData.Init();
+                
+        this.Text : new TextText;
+        this.Text.Init();
+        this.Text.Data : this.StringData;
+        this.Text.Range : new Range;
+        this.Text.Range.Init();
+        
+        this.CharForm : new CharForm;
+        this.CharForm.Init();
+        
+        this.CharCompare : new IntCompare;
+        this.CharCompare.Init();
+        
+        this.TextCompare : new TextCompare;
+        this.TextCompare.CharCompare : this.CharCompare;
+        this.TextCompare.LeftCharForm : this.CharForm;
+        this.TextCompare.RightCharForm : this.CharForm;
+        this.TextCompare.Init();
+        
+        this.TextNewLine = this.TextInfra.TextCreateStringData("\n", null);
         return true;
     }
     
     field prudate String String { get { return data; } set { data : value; } }
     field prudate Int Index { get { return data; } set { data : value; } }
-    field precate Range Range { get { return data; } set { data : value; } }
-
+    field precate TextInfra TextInfra { get { return data; } set { data : value; } }
+    field precate TextText Text { get { return data; } set { data : value; } }
+    field precate TextCompare TextCompare { get { return data; } set { data : value; } }
+    field precate CharForm CharForm { get { return data; } set { data : value; } }
+    field precate Compare CharCompare { get { return data; } set { data : value; } }
+    field precate StringData StringData { get { return data; } set { data : value; } }
+    field precate TextText TextNewLine { get { return data; } set { data : value; } }
+    
     maide prudate String Read()
     {
-        var String o;
-        o : this.String;
+        var TextInfra textInfra;
+        textInfra : this.TextInfra;
+        
+        var TextText text;
+        text : this.Text;
+        
+        var Range range;
+        range : text.Range;
+
+        var String string;
+        string : this.String;
+
+        this.StringData.ValueString : string;
+        
         var Int index;
         index : this.Index;
-        var Range range;
-        range : this.Range;
+        
+        var Int end;
+        end = string.Count;
+        
+        var Int countA;
+        countA : end - index;
+        
+        range.Index : index;
+        range.Count : countA;
 
-        var String a;
-
-        var Int u;
-        u : o.Index("\n", index);
+        var Int k;
+        k : textInfra.Index(text, this.TextNewLine, this.TextCompare);
 
         var Bool b;
-        b : (u < 0);
+        b : (k = null);
+
         inf (b)
         {
-            range.Index : index;
-            range.Count : null;
-            a : o.Substring(range);
+            a : textInfra.StringCreate(text);
             
-            index : index + a.Count;
+            index : end;
         }
         inf (!b)
         {
             var Int count;
-            count : u - index;
-            
-            range.Index : index;
+            count : k;
+
             range.Count : count;
-            a : o.Substring(range);
+
+            a : textInfra.StringCreate(text);
             
             index : index + count + 1;
         }
