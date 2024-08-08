@@ -20,7 +20,7 @@ class StringInn : Inn
         b : (u < 0);
         inf (b)
         {
-            a : o.Substring(index);
+            a : o.Substring(index, null);
             index : index + a.Count;
         }
         inf (!b)
