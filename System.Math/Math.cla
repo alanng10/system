@@ -7,6 +7,7 @@ class Math : Any
         this.Extern : share Extern;
         this.InternComp : new InternMathComp;
         this.InternComp.Init();
+        this.Intern : 0;
         return true;
     }
 
