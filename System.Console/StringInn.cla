@@ -1,0 +1,44 @@
+class StringInn : Inn
+{
+    field prudate String String { get { return data; } set { data : value; } }
+
+    field prudate Int Index { get { return data; } set { data : value; } }
+
+    maide prudate String Read()
+    {
+        var String o;
+        o : this.String;
+        var Int index;
+        index : this.Index;
+
+        var String a;
+
+        var Int u;
+        u : o.Index("\n", index);
+
+        var Bool b;
+        b : (u < 0);
+        inf (b)
+        {
+            a : o.Substring(index);
+            index : index + a.Count;
+        }
+        inf (!b)
+        {
+            var Int count;
+            count : u - index;
+            a : o.Substring(index, count);
+            index : index + count + 1;
+        }
+
+        this.Index : index;
+
+        return a;
+    }
+
+    maide prudate Bool Reset()
+    {
+        this.Index : 0;
+        return true;
+    }
+}
