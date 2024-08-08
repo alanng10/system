@@ -3,7 +3,7 @@ class StringInn : Inn
     maide prudate Bool Init()
     {
         base.Init();
-        this.Range = new Range;
+        this.Range : new Range;
         this.Range.Init();
         return true;
     }
@@ -30,8 +30,8 @@ class StringInn : Inn
         b : (u < 0);
         inf (b)
         {
-            range.Index = index;
-            range.Count = null;
+            range.Index : index;
+            range.Count : null;
             a : o.Substring(range);
             
             index : index + a.Count;
@@ -41,8 +41,8 @@ class StringInn : Inn
             var Int count;
             count : u - index;
             
-            range.Index = index;
-            range.Count = count;
+            range.Index : index;
+            range.Count : count;
             a : o.Substring(range);
             
             index : index + count + 1;
