@@ -30,7 +30,6 @@ class ConsoleIntern : Any
         return true;
     }
 
-
     maide prudate Bool OutWrite(var String a)
     {
         var Int uo;
