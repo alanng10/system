@@ -1,0 +1,5 @@
+class Pos : Any
+{
+    field prudate Int Left { get { return data; } set { data : value; } }
+    field prudate Int Up { get { return data; } set { data : value; } }
+}
