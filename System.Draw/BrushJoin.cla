@@ -1,0 +1,5 @@
+class BrushJoin : Any
+{
+    field prudate Int Index { get { return data; } set { data : value; } }
+    field probate Int Intern { get { return data; } set { data : value; } }
+}
