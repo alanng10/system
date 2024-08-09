@@ -1,0 +1,7 @@
+class Color : Any
+{
+    field prudate Int Alpha { get { return data; } set { data : value; } }
+    field prudate Int Red { get { return data; } set { data : value; } }
+    field prudate Int Green { get { return data; } set { data : value; } }
+    field prudate Int Blue { get { return data; } set { data : value; } }
+}
